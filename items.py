@@ -1,4 +1,4 @@
-import random
+from random import randint
 
 class Weapon:
     def __init__(self):
@@ -11,7 +11,7 @@ class Rock(Weapon):
     def __init__(self):
         self.name = 'Rock'
         self.description = 'A fist-sized rock, suitable for bludgeoning.'
-        self.damage = 5
+        self.damage = randint(3, 7)
         self.value = 1
 
 class Dagger(Weapon):
@@ -19,17 +19,17 @@ class Dagger(Weapon):
         self.name = "Dagger"
         self.description = "A small dagger with some rust. " \
                            "Somewhat more dangerous than a rock."
-        self.damage = 10
+        self.damage = randint(7, 12)
         self.value = 20
 
 
-class RustySword():
-    def _init__(self):
-        self.name = "Rusty sword"
-        self.description = "This sword is showing its age, " \
-                           "but still has some fight in it."
-        self.damage = 20
-        self.value = 100
+class BroadSword(Weapon):
+    def __init__(self):
+        self.name = "BroadSword"
+        self.description = "A large BroadSword with some rust. " \
+                           "Much more dangerous than a rock."
+        self.damage = randint(20, 30)
+        self.value = 30
 
 class Consumable():
     def __init__(self):

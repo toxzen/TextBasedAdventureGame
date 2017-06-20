@@ -205,11 +205,12 @@ def parse_world_dsl():
         world_map.append(row)
 
 world_dsl = """
-|EN|EN|VT|EN|EN|
-|EN| | | |EN|
-|EN|FG|EN| |TT|
-|TT| |ST|FG|EN|
-|FG| |EN| |FG|
+|EN|FG|FG|EN|EN|EN|
+|EN|EN|VT|EN|EN|TT|
+|EN|FG|FG|EN|EN|EN|
+|EN|FG|EN|EN|TT|FG|
+|TT|EN|ST|FG|EN|FG|
+|FG|EN|EN|EN|FG|FG|
 """
 
 

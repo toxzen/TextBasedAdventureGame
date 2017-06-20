@@ -13,8 +13,11 @@ class Trader(NonPlayableCharacter):
     def __init__(self):
         self.name = "Thatcher"
         self.gold = 100
-        self.inventory = [items.CrustyBread(), 
+        self.inventory = [items.CrustyBread(),
                       items.CrustyBread(),
                       items.CrustyBread(),
                       items.HealingPotion(),
-                      items.HealingPotion()]
+                      items.HealingPotion(),
+                      items.RedApple(),
+                      items.Dagger(),
+                      items.BroadSword()]
