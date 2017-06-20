@@ -1,6 +1,7 @@
 import random
 import enemies
 import npc
+import items
 from collections import OrderedDict
 
 class MapTile:
@@ -33,17 +34,15 @@ class TraderTile(MapTile):
             print("{}. {} - {} Gold".format(i, item.name, item.value))
         while True:
             user_input = input("Choose an item or press Q to exit: ")
-            while True:
-                user_input = input("Choose an item or press Q to exit: ")
-                if user_input in ['Q', 'q']:
-                    return
-                else:
-                    try:
-                        choice = int(user_input)
-                        to_swap = seller.inventory[choice - 1]
-                        self.swap(seller, buyer, to_swap)
-                    except ValueError:
-                        print("invalid choice!")
+            if user_input in ['Q', 'q']:
+                return
+            else:
+                try:
+                    choice = int(user_input)
+                    to_swap = seller.inventory[choice - 1]
+                    self.swap(seller, buyer, to_swap)
+                except ValueError:
+                    print("invalid choice!")
 
     def swap(self, seller, buyer, item):
         if item.value > buyer.gold:
@@ -75,6 +74,42 @@ class TraderTile(MapTile):
         A frail not-quite-human, not-quite-creature squats in the corner
         clinking his gold coins together.  He looks willing to trade.
         """
+
+class BossTile(MapTile):
+    def __init__(self, x, y):
+        self.gold = random.randint(1, 50)
+        self.plunder_claimed = False
+        self.sword = items.BroadSword()
+        self.enemy = enemies.Dragon()
+        self.alive_text = "A huge dragon steps from out the trees " \
+                          "its gives a deafening roar!"
+
+        self.dead_text = "The stinking carcass of a dead dragon " \
+                         "fills the air of the forest."
+
+
+
+        super().__init__(x,y)
+
+    def intro_text(self):
+        text = self.alive_text if self.enemy.is_alive() else self.dead_text
+
+        return text
+
+    def modify_player(self, player):
+        if self.enemy.is_alive():
+            player.hp = player.hp - self.enemy.damage
+            print("Enemy does {} damage.  You have {} HP remaining.".
+                  format(self.enemy.damage, player.hp))
+        # ClAIM PLUNDER
+        else:
+            if not self.plunder_claimed:
+                self.plunder_claimed = True
+                player.gold = player.gold + self.gold
+                print('You plundered {} gold from the dragon!'.format(self.gold))
+                self.sword = player.inventory.append(self.sword)
+                print('You recieved a Broadsword!')
+
 
 
 
@@ -180,6 +215,7 @@ tile_type_dict = {"VT": VictoryTile,
                   "ST": StartTile,
                   "FG": FindGoldTile,
                   "TT": TraderTile,
+                  "BB": BossTile,
                   " ": None}
 
 start_tile_location = None
@@ -205,11 +241,11 @@ def parse_world_dsl():
         world_map.append(row)
 
 world_dsl = """
-|EN|FG|FG|EN|EN|EN|
+|EN|FG|FG|EN|EN|BB|
 |EN|EN|VT|EN|EN|TT|
 |EN|FG|FG|EN|EN|EN|
 |EN|FG|EN|EN|TT|FG|
-|TT|EN|ST|FG|EN|FG|
+|TT|BB|ST|FG|EN|FG|
 |FG|EN|EN|EN|FG|FG|
 """
 

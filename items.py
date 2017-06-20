@@ -28,8 +28,8 @@ class BroadSword(Weapon):
         self.name = "BroadSword"
         self.description = "A large BroadSword with some rust. " \
                            "Much more dangerous than a rock."
-        self.damage = randint(20, 30)
-        self.value = 30
+        self.damage = randint(30, 50)
+        self.value = 200
 
 class Consumable():
     def __init__(self):

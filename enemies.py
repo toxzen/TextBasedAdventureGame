@@ -31,3 +31,9 @@ class RockMonster(Enemy):
         self.name = "Rock Monster"
         self.hp = 80
         self.damage = 15
+
+class Dragon(Enemy):
+    def __init__(self):
+        self.name = "Dragon"
+        self.hp = 40
+        self.damage = 10
