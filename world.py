@@ -29,7 +29,7 @@ class TraderTile(MapTile):
         super().__init__(x,y)
 
     def trade(self, buyer, seller):
-        for i, item in enumerate(seller,inventory, 1):
+        for i, item in enumerate(seller.inventory, 1):
             print("{}. {} - {} Gold".format(i, item.name, item.value))
         while True:
             user_input = input("Choose an item or press Q to exit: ")
@@ -40,7 +40,7 @@ class TraderTile(MapTile):
                 else:
                     try:
                         choice = int(user_input)
-                        to_swap = seller.invetory[choice - 1]
+                        to_swap = seller.inventory[choice - 1]
                         self.swap(seller, buyer, to_swap)
                     except ValueError:
                         print("invalid choice!")
@@ -58,6 +58,7 @@ class TraderTile(MapTile):
     def check_if_trade(self, player):
         while True:
             print("Would you like to (B)uy, (S)ell, or (Q)uit?")
+            user_input = input()
             if user_input in ['Q', 'q']:
                 return
             elif user_input in ['B', 'b']:

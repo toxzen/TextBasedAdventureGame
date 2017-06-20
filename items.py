@@ -12,6 +12,7 @@ class Rock(Weapon):
         self.name = 'Rock'
         self.description = 'A fist-sized rock, suitable for bludgeoning.'
         self.damage = 5
+        self.value = 1
 
 class Dagger(Weapon):
     def __init__(self):
@@ -19,6 +20,7 @@ class Dagger(Weapon):
         self.description = "A small dagger with some rust. " \
                            "Somewhat more dangerous than a rock."
         self.damage = 10
+        self.value = 20
 
 
 class RustySword():
@@ -40,11 +42,13 @@ class CrustyBread(Consumable):
     def __init__(self):
         self.name = "Crusty Bread"
         self.healing_value = 10
+        self.value = 12
 
 class RedApple(Consumable):
     def __init__(self):
         self.name = "Red Apple"
         self.healing_value = 15
+        self.value = 16
 
 class HealingPotion(Consumable):
     def __init__(self):
