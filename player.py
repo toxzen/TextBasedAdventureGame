@@ -6,7 +6,8 @@ class Player:
     def __init__(self):
         self.inventory = [items.Rock(),
                           items.Dagger(),
-                          items.CrustyBread()]
+                          items.CrustyBread(),
+                          items.ChestPlate()]
 
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
@@ -23,7 +24,10 @@ class Player:
             print('* ' + str(item))
         print("Gold: {}".format(self.gold))
         best_weapon = self.most_powerful_weapon()
-        print('Your best weapon is your {}'.format(best_weapon))
+        print('You are currently wielding a {}'.format(best_weapon))
+        best_armor = self.most_powerful_armor()
+        print('You are currently wearing a {}'.format(best_armor))
+        print('Your current hp is {}'.format(self.hp))
 
     def most_powerful_weapon(self):
         max_damage = 0
@@ -37,6 +41,21 @@ class Player:
                 pass
 
         return best_weapon
+
+    def most_powerful_armor(self):
+        max_health = 0
+        best_armor = None
+        for item in self.inventory:
+            try:
+                if item.hp > max_health:
+                  best_armor = item
+                  max_health = item.hp
+            except AttributeError:
+                pass
+        self.hp = self.hp + item.hp
+        return best_armor
+
+
 
     def attack(self):
         best_weapon = self.most_powerful_weapon()
@@ -68,7 +87,7 @@ class Player:
             choice = input("")
             try:
                 to_eat = consumables[int(choice) - 1]
-                self.hp = min(100, self.hp + to_eat.healing_value)
+                self.hp = min(self.hp, self.hp + to_eat.healing_value)
                 self.inventory.remove(to_eat)
                 print("Current HP: {}".format(self.hp))
                 valid = True

@@ -55,3 +55,16 @@ class HealingPotion(Consumable):
         self.name = "Healing Potion"
         self.healing_value = 50
         self.value = 60
+
+class Armor():
+    def __init__(self):
+        raise NotImplementedError("Do not create raw Armor objects.")
+
+    def __str__(self):
+        return self.name
+
+class ChestPlate(Armor):
+    def __init__(self):
+        self.name = "Chest Plate"
+        self.hp = 100
+        self.value = 60

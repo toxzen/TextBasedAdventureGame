@@ -20,7 +20,7 @@ class MapTile:
 class StartTile(MapTile):
     def intro_text(self):
         return """
-        You find yourself in a forest with a flickering torch on the wall.
+        You find yourself in a forest with a flickering torch in hand.
         You can make out for paths, each equally as dark and foreboding.
         """
 
@@ -81,8 +81,8 @@ class BossTile(MapTile):
         self.plunder_claimed = False
         self.sword = items.BroadSword()
         self.enemy = enemies.Dragon()
-        self.alive_text = "A huge dragon steps from out the trees " \
-                          "its gives a deafening roar!"
+        self.alive_text = "A huge dragon steps from out the trees. " \
+                          "It gives a deafening roar!"
 
         self.dead_text = "The stinking carcass of a dead dragon " \
                          "fills the air of the forest."
@@ -132,10 +132,10 @@ class EnemyTile(MapTile):
                               "...suddenly you are lost in a swarm of bats!"
             self.dead_text = "Dozens of dead bats are scattered on the ground."
         else:
-            self.enemy = enemies.RockMonster()
-            self.alive_text = "You've disturbed a rock monster " \
+            self.enemy = enemies.StoneGolem()
+            self.alive_text = "You've disturbed a stone golem " \
                               " from his slumber!"
-            self.dead_text = "Defeated, the monster has reverted " \
+            self.dead_text = "Defeated, the golem has reverted " \
                              "into an ordinary rock."
 
         super().__init__(x,y)

@@ -26,9 +26,9 @@ class BatColony(Enemy):
         self.hp = 15
         self.damage = 4
 
-class RockMonster(Enemy):
+class StoneGolem(Enemy):
     def __init__(self):
-        self.name = "Rock Monster"
+        self.name = "Stone Golem"
         self.hp = 80
         self.damage = 15
 
