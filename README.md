@@ -1,7 +1,6 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 # TextBasedAdventureGame
 =======
 # Text Based Adventure Game
-
->>>>>>> c80d91bda390bb1fff1396510e15f83858e8dd90
+>>>>>>> a5976ac78825a142d8b832864848ca27c431c13b
+A simple text based adventure game.
