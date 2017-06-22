@@ -45,14 +45,14 @@ class Player:
     def most_powerful_armor(self):
         max_health = 0
         best_armor = None
-        for item in self.inventory:
+        for armor in self.inventory:
             try:
-                if item.hp > max_health:
-                  best_armor = item
-                  max_health = item.hp
+                if armor.hp > max_health:
+                  best_armor = armor
+                  max_health = armor.hp
             except AttributeError:
                 pass
-        self.hp = self.hp + item.hp
+        self.hp = self.hp + best_armor.hp
         return best_armor
 
 
