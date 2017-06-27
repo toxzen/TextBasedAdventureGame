@@ -241,12 +241,13 @@ def parse_world_dsl():
         world_map.append(row)
 
 world_dsl = """
-|EN|FG|FG|EN|EN|BB|
-|EN|EN|VT|EN|EN|TT|
-|EN|FG|FG|EN|EN|EN|
-|EN|FG|EN|EN|TT|FG|
-|TT|BB|ST|FG|EN|FG|
-|FG|EN|EN|EN|FG|FG|
+|EN|FG|FG|EN|EN|EN|EN|
+|EN|FG|FG|EN|EN|BB|EN|
+|EN|EN|VT|EN|EN|TT|EN|
+|EN|FG|FG|EN|EN|EN|EN|
+|EN|FG|EN|EN|TT|FG|EN|
+|TT|BB|ST|FG|EN|FG|EN|
+|FG|EN|EN|EN|FG|FG|EN|
 """
 
 

@@ -15,6 +15,7 @@ class Player:
         self.gold = 5
         self.victory = False
 
+
     def is_alive(self):
         return self.hp > 0
 
@@ -52,7 +53,9 @@ class Player:
                   max_health = armor.hp
             except AttributeError:
                 pass
+
         self.hp = self.hp + best_armor.hp
+
         return best_armor
 
 
